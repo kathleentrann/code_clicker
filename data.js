@@ -1,5 +1,5 @@
 window.data = {
-	codeLines: 500000,
+	codeLines: 0,
 	totalCPS: 0,
 	producers: [
 		{
