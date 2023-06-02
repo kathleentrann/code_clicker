@@ -2,52 +2,65 @@
 
 // Make your References to the two DOM nodes
 // Create a reference to the element who's ID is 'coding_station and call it codingStation
-const codingStation = document.getElementById('coding_station');
+// Write Code Under This //
 
 // Create a reference to the element who's ID is 'producer_container' and call it producerContainer
-const producerContainer = document.getElementById('producer_container');
+// Write Code Under This //
 
 /**************
  *   SLICE 1
- **************/
+ ************* */
+
+/**
+ * Updates the code view with the given code quantity.
+ * @param {number} codeQty - The code quantity to display.
+ */
 
 function updateCodeView(codeQty) {
 	// Create a reference to the element who's ID is 'code_counter'
-	const codeCounter = document.getElementById('code_counter');
 	// Set the innerText of that element to be the codeQty passed into this function
-	codeCounter.innerText = codeQty;
 }
+
+/**
+ * Handles the click event on the codingStation element.
+ * Increments the code property of the data object by one.
+ * Calls the updateCodeView and renderProducers functions with the updated data.
+ * @param {Object} data - The game data object.
+ */
 
 function clickDesktop(data) {
 	// Increment the data object's (passed into this function) code property by one
-	data.codeLines++;
 	// call the updateCodeView function and pass it the newly updated data.code property
-	updateCodeView(data.codeLines);
 	// call the renderProducers function and pass it the data object
-	renderProducers(data);
 }
 
 /**************
  *   SLICE 2
- **************/
+ ************* */
+
+/**
+ * Unlocks producers based on the codeCount.
+ * @param {Array} producers - The array of producers to unlock.
+ * @param {number} codeCount - The current code count.
+ */
+
 
 function unlockProducers(producers, codeCount) {
 	// loop through the producers array passed into the function
-	// for each producer, if the codeCount (passed in) is greater than or equal
-	// to half the producer's price, reassign the producers.unlocked property to equal true
-	producers.forEach(idObj => {
-		if (codeCount >= idObj.price / 2) {
-			idObj.unlocked = true;
-		}
-	});
-	return producers;
+	// If the codeCount (passed in) is greater than or equal to half the producer's price,
+	// reassign the producer's unlocked property to true
 }
 
+/**
+ * Gets the unlocked producers from the data object.
+ * @param {Object} data - The game data object.
+ * @returns {Array} - An array of unlocked producers.
+ */
+
 function getUnlockedProducers(data) {
-	// use the Array.prototype.filter() method
-	// filter through the data.producers property, and return an array with only the producers whose
+	// Use the Array.prototype.filter() method
+	// Filter through the data.producers property and return an array with only the producers whose
 	// unlocked property is true
-	return data.producers.filter(producer => producer.unlocked === true);
 }
 
 // You shouldn't need to edit this function
@@ -86,23 +99,31 @@ function deleteAllChildNodes(parent) {
 	}
 }
 
+
+/**
+ * Renders the producers on the screen.
+ * Calls the unlockProducers function with data.producers and data.code to determine the unlocked producers.
+ * Retrieves a reference to the DOM element with the ID 'producer_container'.
+ * Calls the deleteAllChildNodes function with the producerContainer element to clear its child nodes.
+ * For each unlocked producer, creates an HTML div element using makeProducerDiv and appends it to the producerContainer element.
+ * @param {Object} data - The game data object.
+ */
+
 function renderProducers(data) {
-	// call the unlockProducers function and pass it data.producers and data.code
-	unlockProducers(data.producers, data.codeLines);
-	// make a reference to the DOM element whose ID is producer_container
-	const producerContainer = document.getElementById('producer_container');
-	// call the deleteAllChildNodes function and pass it the above producerContainer element
-	deleteAllChildNodes(producerContainer);
-	// you do not need to edit the following code, but for understanding, this gets the unlocked producers,
-	// and for each producer makes a little html div with that producer's info
-	getUnlockedProducers(data).forEach(producer => {
-		producerContainer.appendChild(makeProducerDiv(producer));
-	});
+  // Call the unlockProducers function and pass it data.producers and data.code
+  // Retrieve a reference to the DOM element with the ID 'producer_container'
+  // Call the deleteAllChildNodes function and pass it the producerContainer element
+
+  // you do not need to edit the following code, but for understanding,
+  // Iterate over the unlocked producers and create HTML div elements for each
+  getUnlockedProducers(data).forEach(producer => {
+    producerContainer.appendChild(makeProducerDiv(producer));
+  });
 }
 
 /**************
  *   SLICE 3
- **************/
+ ************* */
 // You shouldn't need to edit this function
 function getProducerById(data, producerId) {
 	return data.producers.find(producer => producerId === producer.id);
@@ -153,19 +174,24 @@ function buyButtonClick(event, data) {
 	}
 }
 
+/**
+ * Updates the game state in each tick.
+ * Increments the data object's code property by the data.totalCPS amount.
+ * Calls the updateCodeView function with the data.code property.
+ * Calls the renderProducers function with the newly updated data object.
+ * @param {Object} data - The game data object.
+ */
+
 function tick(data) {
-	// increment the data object's (passed into this function)
-	// code property by the data.totalCPS amount
-	data.codeLines += data.totalCPS;
-	// call the updateCodeView function and pass it the data.code property
-	updateCodeView(data.codeLines);
-	// call the renderProducers function and pass it the newly updated data object
-	renderProducers(data);
+ // Increment the data object's code property by the data.totalCPS amount
+ // Call the updateCodeView function and pass it the data.code property
+ // Call the renderProducers function and pass it the newly updated data object
+
 }
 
 /*************************
  *  Start your engines!
- *************************/
+ ************************ */
 
 // So far we've just defined some functions; we haven't actually
 // called any of them. Now it's time to get things moving.
@@ -181,18 +207,26 @@ if (typeof process === 'undefined') {
 
 	/**************
 	 *   EVENT LISTENERS
-	 **************/
+	 ************* */
 
-	// Add an event listener to the giant code emoji
-	codingStation.addEventListener('click', () => clickDesktop(data));
+  /**
+ * Handles the click event on the codingStation element.
+ * Calls the clickDesktop function with the global data object.
+ * @param {Event} event - The click event object.
+ */
+	// Write Code Under This //
 
-	// Add an event listener to the container that holds all of the producers
-	// Pass in the browser event and our data object to the event listener
-	producerContainer.addEventListener('click', event => {
-		buyButtonClick(event, data);
-	});
 
-	// Call the tick function passing in the data object once per second
+/**
+ * Handles the click event on the container that holds producers (that you referenced above).
+ * Calls the buyButtonClick function with the event object and the global data object.
+ * @param {Event} event - The click event object.
+ */
+// Write Code Under This //
+
+
+	// You do not need to edit this last line.
+  // Call the tick function passing in the data object once per second
 	setInterval(() => tick(data), 1000);
 }
 

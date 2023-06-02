@@ -7,7 +7,7 @@ const window = new JSDOM(`<!DOCTYPE html><body></body>`).window;
 const { document } = window;
 global.window = window;
 global.document = document;
-// Sinon is a framework which provides helper functions for writing tests-- you've seen it beofre in foundations. We'll be using it's built-in `spy` method to check whether you're calling functions.
+// Sinon is a framework which provides helper functions for writing tests-- you've seen it before in foundations. We'll be using it's built-in `spy` method to check whether you're calling functions.
 const sinon = require('sinon');
 
 // This imports your code so we can test it
@@ -38,11 +38,11 @@ function resetJSDOM() {
 
 /***************************
  *   SLICE 1 STARTS HERE
- ***************************/
+ ************************** */
 
 // First, if you haven't, read the README.md file. If you've done that already, move on!
 
-// Before you get started writing code that passes the tests, be sure to do `npm run start` and open http://localhost:8000 so you can also see the results of your work in the web browser. This will make it easier to understand what the tests are asking for. We'll also be providing some guidance as to what functionality you can expect to see at each step of the way. At first, you should see a giant code emoji with some text above it and an empty div tag labeled "Code producers."
+// Before you get started writing code that passes the tests, be sure to do `npm run start` in `Shell` terminal and search for `Webview` so you can also see the results of your work in the web browser. This will make it easier to understand what the tests are asking for. We'll also be providing some guidance as to what functionality you can expect to see at each step of the way. At first, you should see a giant code station image with some text above it and an empty div tag labeled "Code Producers."
 
 // Remember that you can open multiple terminal emulator windows or multiple tabs within your terminal emulator-- this will let you run the web server at the same time that you run the tests using Mocha.
 
@@ -89,19 +89,17 @@ describe('Slice 1: Clicking & Incrementing Code', function () {
 	});
 });
 
-// You've made it through slice 1-- great! If these two tests are passing, you should be able to open the page up in your browser (do `npm run start` and then visit http://localhost:8000) and see some functionality. At the bottom of `script.js` you'll see some code that attaches your `clickDesktop` function to the code emoji you see on screen (this is just a div element). Now, when you click the emoji, you should see the counter update (because of the `updateCodeView` function).
+// You've made it through slice 1-- great! If these two tests are passing, you should be able to open the page up in `WebView` (do `npm run start` in `Shell` and search for `WebView`) and see some functionality. At the bottom of `script.js` you'll see some code that attaches your `clickDesktop` function to the coding station image you see on screen (this is just a div element). Now, when you click the coding station image, you should see the counter update (because of the `updateCodeView` function).
 
-// Try opening up your browser's console. On a mac in Chrome, the shortcut is cmd + option + J. Here, you have access to all of the functions defined in the global scope.
+// Try running `updateCodeView(5000)` in your script file. What do you see? Why?
 
-// Try running `updateCodeView(5000)`. What do you see? Why?
-
-// Now try runnning `data`. You'll see the data object printed to the console-- something like: `{codeLines: 0, totalCPS: 0, producers: Array(12)}`. you can click the arrow to expand this object.
+// Now try console.log(data) in your `script.js`. You'll see the data object printed to the console (click on the wrench to have console terminal)-- something like: `{codeLines: 0, totalCPS: 0, producers: Array(12)}`.
 
 // To debug, you can manually manipulate variables to see how the app responds. Try `data.codeLines = 5000`, then try running `data` again. The data has changed, but what we see on screen hasn't changed. Why? Finally, try running `clickDesktop(data);`. Does what you see make sense?
 
 /***************************
  *   SLICE 2 STARTS HERE
- ***************************/
+ ************************** */
 
 describe('Slice 2: Unlocking & Rendering Producers', function () {
 	describe('The unlockProducers function', function () {
@@ -386,13 +384,13 @@ describe('Slice 2: Unlocking & Rendering Producers', function () {
 	});
 });
 
-// That's the end of slice 2. In the browser, you should now have an interactive app that lets you click the code mug to get code, and which renders producers to the screen as they become unlocked.
+// That's the end of slice 2. In the browser, you should now have an interactive app that lets you click the coding station image to get code, and which renders producers to the screen as they become unlocked.
 
 // Next we'll wire up the 'buy' buttons on the producer and then set up a 'tick' function which 'runs' the producers, adding code automatically every second based on what producers the player has.
 
 /***************************
  *   SLICE 3 STARTS HERE
- ***************************/
+ ************************** */
 
 describe('Slice 3: Buying Producers & Tick', function () {
 	describe('The getProducerById function', function () {
@@ -598,7 +596,7 @@ describe('Slice 3: Buying Producers & Tick', function () {
 		it('mutates the data only if the player can afford the producer', function () {
 			// buyButtonClick accepts a browser event argument. Here we simulate this by creating an event object ourselves we'll only give that fake event object the properties that are relevant for our purposes
 
-			// This purchase should suceed
+			// This purchase should succeed
 			const snapshot = JSON.stringify(data);
 			const event = {
 				target: { tagName: 'BUTTON', id: 'buy_producer_A' },
@@ -726,6 +724,4 @@ describe('Slice 3: Buying Producers & Tick', function () {
 	});
 });
 
-// If you've finished the last slice, you should now be able, in the browser, to buy producers and see the code count increment automatically. It's possible to progress in the game more quickly than at the end of slice 2, when all you could do is click, but if you want to cheat to make sure everything is working, remember that you can always open the console and set `data.code` to a very large number.
-
-// Don't forget to commit your changes-- and to take a look at the extra credit in the README, if you have time to spare!
+// If you've finished the last slice, you should now be able, in the browser, to buy producers and see the code count increment automatically. It's possible to progress in the game more quickly than at the end of slice 2, when all you could do is click, but if you want to cheat to make sure everything is working, remember that you can always open the console and set `data.codeLines` to a very large number.

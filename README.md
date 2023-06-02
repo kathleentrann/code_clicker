@@ -11,6 +11,16 @@ Importantly, the price (in code) of each producer will increase according to the
 
 In addition to a code line counter, the player will be able to see how many of each producer they possess, the current price of each producer, the CPS (code per second) of each producer, and the total CPS for all producers, combined. Finally, to make things more interesting, we won't show all of the producers at the start of the game-- they'll be unlocked successively as they player accumulates more code.
 
+## First Steps
+
+This assignment is set up so that as you begin to pass the tests, you'll see more functionality appear in the web page you're working on. So you'll be going back and forth between code, tests, and the final product in the browser.
+
+The command `npm start` will start a simple web server and open up your page; you'll need to keep this server running if you want to be able to refresh the page as you work. It might help to keep multiple console windows or tabs open if you want to run the server and run the tests at the same time.
+
+True unit tests look at blocks of code in isolation from each other. Many of the tests we've written here are not true unit tests; the code they test will sometimes need to invoke other code, tested elsewhere. That is, we're going to ask some of your functions to call others, sometimes for their return values, sometimes for their effects on the DOM, and sometimes for their effects on the data.
+
+This means that you won't be able to pass some of the later tests until you pass earlier ones. If you get stuck, ask fellows or instructors for help. And, remember that it's okay for some functions you write to invoke other functions you've written.
+
 
 ## Starting Point
 
@@ -47,13 +57,3 @@ Finally, Mocha will print out the Javascript error messages from the failing spe
 Importantly, the output of any `console.log()` statements, whether written in the test files or your own code, will appear in the _first_ section, as this is when the code actually executes. Mocha remembers error messages and only prints them during the third, final, part of its output.
 
 It can sometimes be useful to clear the console output periodically when running tests to allow you to more easily find the beginning of the current run.
-
-## First Steps
-
-This assignment is set up so that as you begin to pass the tests, you'll see more functionality appear in the web page you're working on. So you'll be going back and forth between code, tests, and the final product in the browser.
-
-The command `npm start` will start a simple web server and open up your page; you'll need to keep this server running if you want to be able to refresh the page as you work. It might help to keep multiple console windows or tabs open if you want to run the server and run the tests at the same time.
-
-True unit tests look at blocks of code in isolation from each other. Many of the tests we've written here are not true unit tests; the code they test will sometimes need to invoke other code, tested elsewhere. That is, we're going to ask some of your functions to call others, sometimes for their return values, sometimes for their effects on the DOM, and sometimes for their effects on the data.
-
-This means that you won't be able to pass some of the later tests until you pass earlier ones. If you get stuck, ask fellows or instructors for help. And, remember that it's okay for some functions you write to invoke other functions you've written.
