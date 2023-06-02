@@ -44,7 +44,6 @@ function clickDesktop(data) {
  * @param {number} codeCount - The current code count.
  */
 
-
 function unlockProducers(producers, codeCount) {
 	// loop through the producers array passed into the function
 	// If the codeCount (passed in) is greater than or equal to half the producer's price,
@@ -99,7 +98,6 @@ function deleteAllChildNodes(parent) {
 	}
 }
 
-
 /**
  * Renders the producers on the screen.
  * Calls the unlockProducers function with data.producers and data.code to determine the unlocked producers.
@@ -110,15 +108,24 @@ function deleteAllChildNodes(parent) {
  */
 
 function renderProducers(data) {
-  // Call the unlockProducers function and pass it data.producers and data.code
-  // Retrieve a reference to the DOM element with the ID 'producer_container'
-  // Call the deleteAllChildNodes function and pass it the producerContainer element
+	// Call the unlockProducers function and pass it data.producers and data.code
+	// Retrieve a reference to the DOM element with the ID 'producer_container'
+	// Call the deleteAllChildNodes function and pass it the producerContainer element
 
-  // you do not need to edit the following code, but for understanding,
-  // Iterate over the unlocked producers and create HTML div elements for each
-  getUnlockedProducers(data).forEach(producer => {
-    producerContainer.appendChild(makeProducerDiv(producer));
-  });
+	// you do not need to edit the following code, but for understanding,
+	// Iterate over the unlocked producers and create HTML div elements for each
+	const unlockedProducers = getUnlockedProducers(data);
+
+	// Check if the producers array is empty or undefined
+	if (unlockedProducers && unlockedProducers.length > 0) {
+		unlockedProducers.forEach(producer => {
+			producerContainer.appendChild(makeProducerDiv(producer));
+		});
+	} else {
+		// Handle the case when there are no unlocked producers
+		// For example, you can display a message or perform any other desired action
+		console.log('No unlocked producers found.');
+	}
 }
 
 /**************
@@ -183,10 +190,9 @@ function buyButtonClick(event, data) {
  */
 
 function tick(data) {
- // Increment the data object's code property by the data.totalCPS amount
- // Call the updateCodeView function and pass it the data.code property
- // Call the renderProducers function and pass it the newly updated data object
-
+	// Increment the data object's code property by the data.totalCPS amount
+	// Call the updateCodeView function and pass it the data.code property
+	// Call the renderProducers function and pass it the newly updated data object
 }
 
 /*************************
@@ -209,24 +215,22 @@ if (typeof process === 'undefined') {
 	 *   EVENT LISTENERS
 	 ************* */
 
-  /**
- * Handles the click event on the codingStation element.
- * Calls the clickDesktop function with the global data object.
- * @param {Event} event - The click event object.
- */
+	/**
+	 * Handles the click event on the codingStation element.
+	 * Calls the clickDesktop function with the global data object.
+	 * @param {Event} event - The click event object.
+	 */
 	// Write Code Under This //
 
-
-/**
- * Handles the click event on the container that holds producers (that you referenced above).
- * Calls the buyButtonClick function with the event object and the global data object.
- * @param {Event} event - The click event object.
- */
-// Write Code Under This //
-
+	/**
+	 * Handles the click event on the container that holds producers (that you referenced above).
+	 * Calls the buyButtonClick function with the event object and the global data object.
+	 * @param {Event} event - The click event object.
+	 */
+	// Write Code Under This //
 
 	// You do not need to edit this last line.
-  // Call the tick function passing in the data object once per second
+	// Call the tick function passing in the data object once per second
 	setInterval(() => tick(data), 1000);
 }
 
